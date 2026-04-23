@@ -9,3 +9,23 @@ export const CategoriesApiResponseSchema = z.object({
     )
 
 })
+
+export const RecipesSchema = z.object({ //BUSCAR
+
+    ingredient: z.string(),
+    category: z.string()
+
+})
+
+export const getRecipeSchema = z.object({
+
+    drinks: z.array(
+        z.object({
+            strDrink: z.string(),
+            strDrinkThumb: z.string(),
+            idDrink: z.string()
+        })
+    )
+
+})
+
