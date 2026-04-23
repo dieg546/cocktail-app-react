@@ -8,7 +8,7 @@ export default function MainLayout() {
     
         <Header/>
 
-        <main className=' container mx-auto py-16'>
+        <main className=' container mx-auto py-8 px-5'>
 
             <Outlet/>
 

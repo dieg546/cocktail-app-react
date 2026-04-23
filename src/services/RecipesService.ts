@@ -1,6 +1,7 @@
 import axios from "axios"
-import { CategoriesApiResponseSchema, getRecipeSchema } from "../utils/recipes-schema"
+import { ApiDrinkSchema, CategoriesApiResponseSchema, getRecipeSchema } from "../utils/recipes-schema"
 import type { Recipe } from "../types"
+import { resumeToPipeableStream } from "react-dom/server"
 
 export async function getCategories() {
     
@@ -24,6 +25,22 @@ export async function getRecipe(searchFilter:Recipe) {
     const {data} = await axios(url);
 
     const result = getRecipeSchema.safeParse(data);
+
+    if(result.success){
+
+        return result.data
+
+    }
+
+}
+
+export async function getApiDrink(id:String){
+
+    const url = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`
+
+    const {data} = await axios(url);
+
+    const result = ApiDrinkSchema.safeParse(data);
 
     console.log(result);
 

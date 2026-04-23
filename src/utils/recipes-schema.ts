@@ -29,3 +29,26 @@ export const getRecipeSchema = z.object({
 
 })
 
+export const unitRecipeSchema = z.object({
+    strDrink: z.string(),
+    strDrinkThumb: z.string(),
+    idDrink: z.string()
+})
+
+
+export const ApiDrinkSchema = z.object({
+
+    drinks: z.array(
+
+        z.object({
+            idDrink: z.string(),
+            strDrink: z.string(),
+            strCategory: z.string(),
+            strDrinkThumb: z.string(),
+        })
+
+    )
+
+})
+
+
