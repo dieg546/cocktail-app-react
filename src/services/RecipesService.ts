@@ -1,7 +1,7 @@
 import axios from "axios"
 import { ApiDrinkSchema, CategoriesApiResponseSchema, getRecipeSchema } from "../utils/recipes-schema"
 import type { Recipe } from "../types"
-import { resumeToPipeableStream } from "react-dom/server"
+
 
 export async function getCategories() {
     
@@ -40,8 +40,15 @@ export async function getApiDrink(id:String){
 
     const {data} = await axios(url);
 
+    console.log('Data Again',data.drinks)
+
     const result = ApiDrinkSchema.safeParse(data);
 
-    console.log(result);
+    console.log('RESULTADO',result)
+
+    if(result.success){
+        return result.data;
+    }
+    
 
 }

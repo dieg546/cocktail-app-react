@@ -1,18 +1,34 @@
-import React from 'react'
+import  { useEffect } from 'react'
 import Header from '../Header'
 import { Outlet } from 'react-router'
+import Modal from '../ModalDrink'
+import { useAppStore } from '../../stores/useAppStore'
+import Notification from '../Notification'
 
 export default function MainLayout() {
+
+  const loadData = useAppStore((state)=> state.loadFromStorage)
+
+  useEffect(()=>{
+
+    loadData()
+
+  },[])
+
   return (
     <>
     
-        <Header/>
+      <Header/>
 
-        <main className=' container mx-auto py-8 px-5'>
+      <main className=' container mx-auto py-8 px-5'>
 
-            <Outlet/>
+          <Outlet/>
 
-        </main>
+      </main>
+
+      <Modal/>
+      
+      <Notification/>
 
     </>
   )

@@ -2,7 +2,14 @@ import { useAppStore } from '../stores/useAppStore';
 import type { unitRecipe } from '../types'
 import { useState } from 'react';
 
-export default function CardRecipe(recipe: unitRecipe) {
+type CardRecipeTypes={
+
+    recipe: unitRecipe
+    comesFavoritesPage: boolean
+
+}
+
+export default function CardRecipe({recipe}:CardRecipeTypes) {
 
     const [loaded, setLoaded] = useState(false);
 

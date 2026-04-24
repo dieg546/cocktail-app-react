@@ -31,7 +31,8 @@ export default function IndexPage() {
 
                         <CardRecipe
                             key={recipe.idDrink}
-                            {...recipe}
+                            comesFavoritesPage={false}
+                            recipe={recipe}
                         />
 
                     ))}
